@@ -1,6 +1,2 @@
-require "Tech_job/version"
-
-module TechJob
-  class Error < StandardError; end
-  # Your code goes here...
-end
+require_relative "./Tech_job/version"
+require_relative './Tech_job/cli'

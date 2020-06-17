@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require './lib/Tech_job'
+
+TechJob::CLI.new.call
