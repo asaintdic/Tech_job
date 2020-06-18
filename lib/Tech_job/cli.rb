@@ -15,6 +15,9 @@ class TechJob::CLI
           2. DevOps Engineer -New York, NY
         DOC
         @jobs =TechJob::Job.all 
+        # @jobs.each.with.index(1) do |job, i|
+        #     puts "#{i}. #{job} "
+        #end
     end
 
     def menu
@@ -22,13 +25,18 @@ class TechJob::CLI
       while input != "exit"
         puts "Number of the job posting you'd like to view the qualifications for, or type list to see all postings again, or type exit"
         input = gets.strip.downcase
-        case input
-        when "1"
-            puts "More info on job 1"
-        when "2" 
-            puts "more info on job 2"
-        when "list" 
+        if input.to_i > 0
+            puts @jobs[input.to_i-1] 
+        elsif input =="list"
             list_postings 
+
+        # case input
+        # when "1"
+        #     puts "More info on job 1"
+        # when "2" 
+        #     puts "more info on job 2"
+        # when "list" 
+        #     list_postings 
         else
             "Type list or exit"
         end
