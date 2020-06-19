@@ -1,5 +1,8 @@
 #!/usr/bin/env ruby
 
-require './lib/Tech_job'
+require "bundler/setup"
+require "Tech_job"
 
-TechJob::CLI.new.call
+ TechJob::Job.new 
+ TechJob::CLI.new.call
+

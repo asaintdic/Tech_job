@@ -1,23 +1,46 @@
 #CLI Controller
 class TechJob::CLI
 
+    @name = ""
     def call
-        puts "Fit Tech Job Postings:"
-        list_postings
-        menu
-        goodbye
+       puts "Please enter your name"
+       @name = gets.strip
+       puts "Welcome #{@name} to FITTech Job Qual Finder!"
+       welcome_user
+       menu
     end
+    def welcome_user
+       puts "Are you ready to look over job postings? yes/no"
+       response = gets.strip
+     if response == "yes"
+        puts "Great! I hope viewing these posts, really help with your resume update #{@name}!"
+        list_postings
+     elsif response == "no"
+        puts "Hopefully you'll try another time #{$name}!"
+        goodbye
+     else
+        puts "Oops thats not a valid response please answer yes or no"
+        welcome_user
+     end
+    end
+    
+    # def call
+    #     puts "Fit Tech Job Postings:"
+    #     list_postings
+    #     menu
+    #     goodbye
+    # end
 
     def list_postings
-        puts "Fit Tech Job Postings:"
-        puts <<-DOC #heredoc
-          1. Senior Software Engineer (iOS)- New York, NY
-          2. DevOps Engineer -New York, NY
-        DOC
-        @jobs =TechJob::Job.all 
-        # @jobs.each.with.index(1) do |job, i|
-        #     puts "#{i}. #{job} "
-        #end
+        # puts "Fit Tech Job Postings:"
+        # puts <<-DOC #heredoc
+        #   1. Senior Software Engineer (iOS)- New York, NY
+        #   2. DevOps Engineer -New York, NY
+        # DOC
+         @jobs =TechJob::Job.postings 
+         @jobs.each.with_index(1) do |job, i|
+             puts "#{i}. #{job.title} "
+        end
     end
 
     def menu
@@ -27,7 +50,8 @@ class TechJob::CLI
         input = gets.strip.downcase
         if input.to_i > 0
             puts @jobs[input.to_i-1] 
-        elsif input =="list"
+            puts
+        elsif input == "list"
             list_postings 
 
         # case input
@@ -38,7 +62,7 @@ class TechJob::CLI
         # when "list" 
         #     list_postings 
         else
-            "Type list or exit"
+         puts "Type list or exit"
         end
        end
     end  
