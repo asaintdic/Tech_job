@@ -5,7 +5,7 @@ class TechJob::CLI
     def call
        puts "Please enter your name"
        @name = gets.strip
-       puts "Welcome #{@name} to FITTech Job Qual Finder!"
+       puts "Welcome #{@name}, to FITTech Job Qual Finder!"
        welcome_user
        menu
     end
@@ -13,7 +13,7 @@ class TechJob::CLI
        puts "Are you ready to look over job postings? yes/no"
        response = gets.strip
      if response == "yes"
-        puts "Great! I hope viewing these posts, really help with your resume update #{@name}!"
+        puts "Great! I hope viewing these posts, really help with your resume update, #{@name}!"
         list_postings
      elsif response == "no"
         puts "Hopefully you'll try another time #{$name}!"
@@ -49,8 +49,11 @@ class TechJob::CLI
         puts "Number of the job posting you'd like to view the qualifications for, or type list to see all postings again, or type exit"
         input = gets.strip.downcase
         if input.to_i > 0
-            puts @jobs[input.to_i-1] 
-            puts
+            @jobs =TechJob::Job.postings 
+         @jobs.each.with_index(1) do |job, i|
+             puts "#{i}. #{job.title}\n\n RESPONSIBILITIES\n\n #{job.responsibilities}\n\n QUALIFICATIONS\n\n #{job.qualifications} "
+         end
+            # puts @jobs[input.to_i-1] 
         elsif input == "list"
             list_postings 
 
