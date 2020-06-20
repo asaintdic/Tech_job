@@ -1,6 +1,7 @@
 class TechJob::Job 
-  attr_accessor :title, :responsibilities, :qualifications, # :url
+  attr_accessor :title, :responsibilities, :qualifications # :url
 
+#   @@jobs = []
      def self.postings
         self.scrape_jobs
         
