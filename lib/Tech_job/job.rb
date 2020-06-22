@@ -1,4 +1,4 @@
-class TechJob::Job 
+class Job 
   attr_accessor :title, :responsibilities, :qualifications # :url
 
 #   @@jobs = []
@@ -22,7 +22,7 @@ class TechJob::Job
         job.responsibilities = doc.search("#content > p:nth-child(3)").text  
         job.qualifications = doc.search("#content > ul:nth-child(5)").text
         job
-        # binding.pry
+        #add url
     end
 
     def self.scrape_peloton2
@@ -33,6 +33,6 @@ class TechJob::Job
         job.responsibilities = doc.search("#content > ul:nth-child(3)").text  
         job.qualifications = doc.search("#content > ul:nth-child(5)").text
         job
-        # binding.pry
+        #add url
     end
 end 

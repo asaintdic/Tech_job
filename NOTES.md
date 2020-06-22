@@ -54,3 +54,18 @@ qualifications = doc.search("#content > ul:nth-child(5)").text #content > ul:nth
         welcome_user
      end
     end
+
+        # def call
+    #     puts "Fit Tech Job Postings:"
+    #     list_postings
+    #     menu
+    #     goodbye
+    # end
+
+    # puts "Fit Tech Job Postings:"
+        # puts <<-DOC #heredoc
+        #   1. Senior Software Engineer (iOS)- New York, NY
+        #   2. DevOps Engineer -New York, NY
+        # DOC
+
+        
