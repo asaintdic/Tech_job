@@ -1,19 +1,15 @@
 class JobScrape
     attr_accessor :title, :responsibilities, :qualifications
 
-     @@all =[]
+    
     def self.postings
         self.scrape_all
     end 
       
     def self.scrape_all
-        @@all << self.scrape_peloton
-        @@all << self.scrape_peloton2
+        Job.all << self.scrape_peloton
+        Job.all << self.scrape_peloton2
     end 
-    
-    def self.all
-        @@all
-    end
 
     def self.scrape_peloton
         doc = Nokogiri::HTML(open("https://boards.greenhouse.io/peloton/jobs/1199501"))

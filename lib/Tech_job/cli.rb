@@ -26,7 +26,7 @@ class CLI
     end
     
     def list_postings
-      JobScrape.all.each.with_index(1) do |job, i| 
+      Job.all.each.with_index(1) do |job, i| 
         puts "#{i}. #{job.title} "
       end 
     end

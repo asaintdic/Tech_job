@@ -6,12 +6,10 @@ class Job
       @title = title
       @responsibilities = responsibilities
       @qualifications = qualifications
-      @@all << self
     end 
      
-
-    def self.all
+   def self.all
         @@all
-    end
-
+   end
+  
 end 
