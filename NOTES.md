@@ -68,4 +68,22 @@ qualifications = doc.search("#content > ul:nth-child(5)").text #content > ul:nth
         #   2. DevOps Engineer -New York, NY
         # DOC
 
+       * Separation of Concerns *
+        3 classes
+        CLI Class
+        Jobs Class
+        Add a scraper class that handles the scraping(scraper)
         
+        Middle man responsible for scraping
+        scrape, create instances, store in the @@jobs variable, when dealing with data
+
+
+        "https://boards.greenhouse.io/peloton/jobs/2218971"
+
+def list_postings
+      # @jobs = Job.postings #define variables in smallest scope possible
+      # Job.scrape_all #job not responsible for scraping all, create a scraping class
+      Job.all.each.with_index(1) do |job, i| 
+        puts "#{i}. #{job.title} "
+      end 
+    end

@@ -1,38 +1,17 @@
 class Job 
-  attr_accessor :title, :responsibilities, :qualifications # :url
+  attr_accessor :title, :responsibilities, :qualifications 
+ 
+   @@all = []
+    def initialize(title:, responsibilities:, qualifications:)
+      @title = title
+      @responsibilities = responsibilities
+      @qualifications = qualifications
+      @@all << self
+    end 
+     
 
-#   @@jobs = []
-     def self.postings
-        self.scrape_jobs
-        
-     end 
-      
-      def self.scrape_jobs 
-       jobs = []
-  
-       jobs << self.scrape_peloton
-       jobs << self.scrape_peloton2
-     end
-
-    def self.scrape_peloton
-        doc = Nokogiri::HTML(open("https://boards.greenhouse.io/peloton/jobs/2218971"))
-        
-        job = self.new
-        job.title = doc.search("h1.app-title").text
-        job.responsibilities = doc.search("#content > p:nth-child(3)").text  
-        job.qualifications = doc.search("#content > ul:nth-child(5)").text
-        job
-        #add url
+    def self.all
+        @@all
     end
 
-    def self.scrape_peloton2
-        doc = Nokogiri::HTML(open("https://boards.greenhouse.io/peloton/jobs/1560822"))
-        
-        job = self.new
-        job.title = doc.search("#header > h1").text
-        job.responsibilities = doc.search("#content > ul:nth-child(3)").text  
-        job.qualifications = doc.search("#content > ul:nth-child(5)").text
-        job
-        #add url
-    end
 end 
