@@ -38,7 +38,7 @@ class CLI
         puts "Number of the job posting you'd like to view the qualifications for, or type list to see all postings again, or type exit"
         input = gets.strip.downcase
         if input.to_i > 0
-         new_jobs = JobScrape.postings[input.to_i-1] 
+         new_jobs = Job.all[input.to_i-1] 
           puts "#{new_jobs.title}\n\n RESPONSIBILITIES\n\n #{new_jobs.responsibilities}\n\n QUALIFICATIONS\n\n #{new_jobs.qualifications} "
         elsif input == "list"
           list_postings 
